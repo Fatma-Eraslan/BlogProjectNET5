@@ -8,4 +8,9 @@
     <Folder Include="Base\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlogProject.CORE\BlogProject.CORE.csproj" />
+    <ProjectReference Include="..\BlogProject.MODEL\BlogProject.MODEL.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,7 @@
+using BlogProject.MODEL.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +25,7 @@ namespace BlogProject.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<BlogContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyBlogSiteConStr")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
