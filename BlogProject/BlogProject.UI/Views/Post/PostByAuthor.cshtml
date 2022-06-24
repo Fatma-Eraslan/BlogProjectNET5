@@ -1,8 +1,10 @@
-﻿@model PostUserVM
+﻿@model IEnumerable<BlogProject.MODEL.Entities.Post>
+
 @{
-    ViewData["Title"] = "Anasayfa";
+    ViewData["Title"] = ViewBag.Author;
 }
-@foreach (Post item in Model.Posts)
+
+@foreach (Post item in Model)
 {
     <article class="col-12 col-md-6 tm-post">
         <hr class="tm-hr-primary">
@@ -31,7 +33,7 @@
         <hr>
         <div class="d-flex justify-content-between">
             <span><i class="fa fa-eye"></i>  @item.ViewCount.ToString()</span>
-            <span><i class="fa fa-user"></i>  @Model.Users.Where(x=>x.ID==item.UserID).FirstOrDefault().FirstName</span>
+            <span><i class="fa fa-user"></i> @ViewBag.Author </span>
         </div>
     </article>
 
@@ -65,4 +67,5 @@
         </nav>
     </div>
 </div>
+
 
