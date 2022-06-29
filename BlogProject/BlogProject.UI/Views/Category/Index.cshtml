@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BlogProject.MODEL.Entities.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@foreach (var item in Model)
+{
+    <article class="col-12 col-md-6 tm-post">
+        <hr class="tm-hr-primary">
+        <a asp-action="PostByCategory" asp-controller="Category"asp-route-id="@item.ID" class="effect-lily tm-post-link tm-pt-60">
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">@item.CategoryName</h2>
+        </a>
+        <p class="tm-pt-30">
+            @item.Description
+        </p>
+    </article>
+}

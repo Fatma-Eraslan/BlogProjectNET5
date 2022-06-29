@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /BlogProject/BlogProject.UI/Views/HtmlSayfalar
+/BlogProject/BlogProject.UI/Areas/Admin/Views/AdminHTMLSayfalar

@@ -21,9 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Category\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\AdminHTMLSayfalar\" />
     <Folder Include="Views\HtmlSayfalar\" />
     <Folder Include="wwwroot\template\img\posts\" />
+    <Folder Include="wwwroot\template\AdminAssets\" />
   </ItemGroup>
 
 </Project>

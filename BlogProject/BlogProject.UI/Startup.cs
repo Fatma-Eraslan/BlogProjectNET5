@@ -50,6 +50,13 @@ namespace BlogProject.UI
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                  name: "AdminArea",
+                  areaName: "Admin",
+                  // pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  pattern: "Administrator/{controller=Home}/{action=Index}/{id?}"
+                  );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -13,13 +13,16 @@ namespace BlogProject.UI.Controllers
         private readonly ICoreService<User> userService;
 
         public CategoryController(ICoreService<Category> categoryService, ICoreService<Post> postService, ICoreService<User> userService)
-        {            
+        {
             this.categoryService = categoryService;
             this.postService = postService;
             this.userService = userService;
         }
-       
-       
+
+        public IActionResult Index()
+        {
+            return View(categoryService.GetActive());
+        }
 
     }
 }

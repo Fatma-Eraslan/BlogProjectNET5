@@ -22,7 +22,7 @@
             <div class="mb-4">
                 <h2 class="pt-2 tm-color-primary tm-post-title">@Model.Post.Title</h2>
                 <p class="tm-mb-40">
-                    <a asp-action="PostByAuthor" asp-controller="Home" asp-route-id="@Model.User.ID"> @Model.User.FirstName  @Model.User.LastName</a> tarafından
+                    <a asp-action="PostByAuthor" asp-controller="Post" asp-route-id="@Model.User.ID"> @Model.User.FirstName  @Model.User.LastName</a> tarafından
                     <b> @Model.Post.CreatedDate.Value.ToShortDateString()</b> tarihinde paylaşıldı
                 </p>
                 <p>
@@ -95,31 +95,25 @@
             {
                 <ul class="tm-mb-75 pl-5 tm-category-list">
 
-                    <li><a asp-action="Home" asp-controller="Category" asp-route-id="@item.ID" class="tm-color-primary">@item.CategoryName</a></li>
+                    <li><a asp-action="PostByCategory" asp-controller="Category" asp-route-id="@item.ID" class="tm-color-primary">@item.CategoryName</a></li>
 
                 </ul>
             }
 
             <hr class="mb-3 tm-hr-primary">
-            <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
-            <a href="#" class="d-block tm-mb-40">
-                <figure>
-                    <img src="img/img-02.jpg" alt="Image" class="mb-3 img-fluid">
-                    <figcaption class="tm-color-primary">Duis mollis diam nec ex viverra scelerisque a sit</figcaption>
-                </figure>
-            </a>
-            <a href="#" class="d-block tm-mb-40">
-                <figure>
-                    <img src="img/img-05.jpg" alt="Image" class="mb-3 img-fluid">
-                    <figcaption class="tm-color-primary">Integer quis lectus eget justo ullamcorper ullamcorper</figcaption>
-                </figure>
-            </a>
-            <a href="#" class="d-block tm-mb-40">
-                <figure>
-                    <img src="img/img-06.jpg" alt="Image" class="mb-3 img-fluid">
-                    <figcaption class="tm-color-primary">Nam lobortis nunc sed faucibus commodo</figcaption>
-                </figure>
-            </a>
+            <h2 class="tm-mb-40 tm-post-title tm-color-primary">Benzer Makaleler</h2>
+
+            @foreach (Post item in ViewBag.RandomPosts)
+            {
+                <a asp-action="PostByID" asp-controller="Post" asp-route-id="@item.ID" class="d-block tm-mb-40">
+                    <figure>
+                        <img src="@item.ImagePath" alt="Image" class="mb-3 img-fluid">
+                        <figcaption class="tm-color-primary">@item.Title</figcaption>
+                    </figure>
+                </a>
+            }
+
+
         </div>
     </aside>
 </div>
