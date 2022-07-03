@@ -1,6 +1,7 @@
 using BlogProject.CORE.Service;
 using BlogProject.MODEL.Context;
 using BlogProject.SERVICE.Base;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,10 @@ namespace BlogProject.UI
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<BlogContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyBlogSiteConStr")));
             services.AddScoped(typeof(ICoreService<>), typeof(BaseService<>));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +50,7 @@ namespace BlogProject.UI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
